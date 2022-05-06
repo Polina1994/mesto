@@ -1,0 +1,13 @@
+.form__job {
+    height: 27px;
+    margin-top: 30px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+@media all and (min-width: 320px) and (max-width: 767px) {
+    .form__job {
+        width: 100%;
+    }
+}
