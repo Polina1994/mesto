@@ -1,0 +1,27 @@
+.popup {
+    width: 430px;
+    height: 330px;
+    background-color: #fff;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    z-index: 2;
+    display: block;
+    margin: 195px auto;
+}
+@media all and (min-width: 768px) and (max-width: 1023px) {
+    .popup {
+        margin-top: 123px;
+        margin-bottom: 0;
+    }
+}
+@media all and (min-width: 320px) and (max-width: 767px) {
+    .popup {
+        margin-top: 123px;
+        margin-bottom: 0;
+        width: 282px;
+        height: 322px;
+    }
+}
+ /* {
+    background-color: rgba(0, 0, 0, 0.5);
+} */
