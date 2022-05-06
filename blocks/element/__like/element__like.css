@@ -1,0 +1,14 @@
+.element__like {
+    padding-right: 30px;
+    padding-top: 30px;
+    margin: 0;
+}
+.element__like:disabled {
+    background: none;
+}
+.element__like:hover {
+    opacity: 0.5;
+}
+.element__like:active {
+    background-color: #000;
+}
