@@ -1,0 +1,27 @@
+.form__close_icon {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+}
+@media screen and (min-width: 1280px) {
+    .form__close_icon:hover {
+        opacity: 0.5;
+    }
+}
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+    .form__close_icon:hover {
+        opacity: 0.5;
+    }
+}
+@media all and (min-width: 768px) and (max-width: 1023px) {
+    .form__close_icon {
+        right: 0;
+        width: 20px;
+    }
+}
+@media all and (min-width: 320px) and (max-width: 767px) {
+    .form__close_icon {
+        right: 0;
+        width: 20px;
+    }
+}
