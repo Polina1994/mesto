@@ -1,0 +1,11 @@
+.form__name {
+    height: 27px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+@media all and (min-width: 320px) and (max-width: 767px) {
+    .form__name {
+        width: 100%;
+     }
+}
