@@ -1,8 +1,6 @@
 .header {
     display: flex;
     flex-direction: column;
-    margin-left: 200px;
-    margin-right: 200px;
 }
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
     .header {
