@@ -5,3 +5,9 @@
     border-radius: 60px;
     border: 1px solid #C4C4C4;
 }
+
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+    .profile__avatar {
+        margin-left: 120px;
+    }
+}
