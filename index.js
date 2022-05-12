@@ -2,8 +2,8 @@ const popup = document.querySelector('.popup');
 const popupContainer = document.querySelector('.popup__container'); 
 const closePopupButton = document.querySelector('.popup__close-button'); 
 const openPopupButtons = document.querySelector('.open-popup');
-const profileName = document.querySelector('.profile__info_name')
-const profileJob = document.querySelector('.profile__info_job')
+const profileName = document.querySelector('.profile__name')
+const profileJob = document.querySelector('.profile__job')
 const inputName = document.querySelector('.popup__input_name')
 const inputJob = document.querySelector('.popup__input_job')
 //открытие попапа
