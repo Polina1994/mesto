@@ -13,13 +13,11 @@
     .profile__add-button:hover {
         opacity: 0.5;
     }
-    .profile__add-button {
-        margin-right: 120px;
-    }
+
 }
 @media all and (min-width: 768px) and (max-width: 1023px) {
     .profile__add-button {
-        margin: 60px 0 0 0;
+        margin-top: 35px;
         
     }
 }
