@@ -1,14 +1,9 @@
 .profile {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    position: relative;
 }
 
-@media all and (min-width: 768px) and (max-width: 1023px) {
-    .profile {
-        justify-content: center;
-    }
-}
 @media all and (min-width: 320px) and (max-width: 767px) {
     .profile {
         display: flex;
