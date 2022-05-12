@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,8 +20,9 @@
                 <div class="profile__people">
                     <img class="profile__avatar" src="./images/image.png">
                     <div class="profile__info">
-                        <h1 class="profile__info_name">Жак-Ив Кусто
-                        <a class="profile__edit-button open-popup" href="#" ><img src="./images/Edit Button.svg" class="profile__edit-button_image"></a></h1>
+                        <p class="profile__info_name">Жак-Ив Кусто
+                            <button class=" open-popup profile__edit-button"><img src="./images/Edit Button.svg" class="profile__edit-button_image"></button>
+                        </p>
                         <p class="profile__info_job">Исследователь океана</p>
                     </div>
                 </div>
@@ -90,16 +91,13 @@
             <img src="./images/Close Icon.svg" class="popup_close">
             
             <h2 class="label__title">Редактировать профиль</h2>
-
+            
             <label class="popup__label">
-                <input type="text" name="name" class="popup__input">
-                <div class="label__text">Жак-Ив Кусто</div>
+                <input type="text" name="name" class="popup__input input__name" value="">
             </label>
             <label class="popup__label">
-                <input type="text" name="job" class="popup__input">
-                <div class="label__text">Исследователь океана</div>
+                <input type="text" name="job" class="popup__input input__job" value="">
             </label>
-          
             <button type="submit" class="popup__button">Сохранить</button>
         </form>
     </div>  
