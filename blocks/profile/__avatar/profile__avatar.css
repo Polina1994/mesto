@@ -4,4 +4,6 @@
     margin-top: 36px;
     border-radius: 60px;
     border: 1px solid #C4C4C4;
+    display: flex;
+    justify-content: flex-start;
 }
