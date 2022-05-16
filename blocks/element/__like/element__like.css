@@ -1,7 +1,15 @@
 .element__like {
-    padding-right: 30px;
-    padding-top: 30px;
-    margin: 0;
+    width: 22px;
+    height: 19px;
+    padding: 0;
+    margin-top: 30px;
+    margin-right: 20px;
+    border: none;
+    background-image: url(../../../images/Vector.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #fff;
+    cursor: pointer;
 }
 .element__like:disabled {
     background: none;
