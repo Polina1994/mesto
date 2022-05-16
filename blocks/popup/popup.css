@@ -10,9 +10,3 @@
     transition: 0.5s all;
     display: none;
 }
-.popup_opened { 
-    opacity: 1;
-    pointer-events: all;
-    transition: 0.5s all;
-    display: flex;
-}
