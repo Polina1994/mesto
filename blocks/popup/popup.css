@@ -9,4 +9,5 @@
     pointer-events: none;
     transition: 0.5s all;
     display: none;
+    align-items: center;
 }
