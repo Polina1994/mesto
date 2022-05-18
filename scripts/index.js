@@ -10,14 +10,14 @@ const inputJob = document.querySelector('.popup__input_value_job')
 
 //открытие попапа
 function openPopup() {
-    popup.classList.add('popup_opened')
+    popup.classList.add('popup_is-opened')
     inputName.value = profileName.textContent
     inputJob.value = profileJob.textContent
 };
 openPopupButtons.addEventListener('click', openPopup)
 // закрытие попапа
 function closePopup() {
-    popup.classList.remove('popup_opened')
+    popup.classList.remove('popup_is-opened')
 }
 closePopupButton.addEventListener('click', closePopup)
 
