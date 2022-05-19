@@ -1,9 +1,8 @@
 .profile {
     display: flex;
-    flex-direction: row;
-    width: 100%;
-    align-items: center;
     justify-content: space-between;
+    flex-direction: row;
+    margin-top: 45px;
 }
 
 @media all and (min-width: 320px) and (max-width: 767px) {
