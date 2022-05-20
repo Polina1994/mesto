@@ -2,12 +2,12 @@
     height: 27px;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
-    width: 80%;
     margin-top: 33px;
     padding: 0;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+    width: 100%;
 }
 .popup__input:first-child {
     margin-top: 51px;
