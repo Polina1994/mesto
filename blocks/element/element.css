@@ -1,6 +1,6 @@
 .element {
     background-color: #fff;
     width: 282px;
-    max-width: max-content;
+    /* max-width: max-content; */
     border-radius: 10px;
 }
