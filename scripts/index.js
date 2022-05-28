@@ -26,8 +26,8 @@ const inputLink = document.querySelector('.popup__input_value_link')  //карт
 const cardList = document.querySelector('.elements') //карточки
 const elementTemplate = document.getElementById('element-template').content; 
 
-const popupOpenImage = document.querySelector('.element__image_is-opened')
-const popupOpenTitle = document.querySelector('.element__title_is-opened')
+const popupOpenImage = document.querySelector('.popup-image__image_is-opened')
+const popupOpenTitle = document.querySelector('.popup-image__title_is-opened')
 
 //открытие попапа
 
