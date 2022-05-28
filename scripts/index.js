@@ -9,7 +9,7 @@ const editButton = document.querySelector('.profile__edit-button') //кнопк�
 const popupAddButton = document.querySelector('.popup-add__button')
 const editPopupCloseButton = document.querySelector('.popup-edit__close-button');  //кнопка закрытия 
 const addPopupCloseButton = document.querySelector('.popup-add__close-button');  //кнопка закрытия 
-const imagePopupCloseButton = document.querySelector('.image-popup__close-button')
+const imagePopupCloseButton = document.querySelector('.popup-image__close-button')
 const openPopupButtons = document.querySelector('.open-popup');  //кнопка открытия
 
 const profileName = document.querySelector('.profile__name')  //имя
