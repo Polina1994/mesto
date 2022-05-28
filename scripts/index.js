@@ -1,44 +1,57 @@
 const popupEdit = document.querySelector('.popup-edit');   //попап редактирования
 const popupAdd = document.querySelector('.popup-add');  //попап добавления
 const popup = document.querySelectorAll('.popup');  //попап
-const popupImage = document.querySelectorAll('.popup-image')
 const popupForm = document.querySelector('.popup__form')  //попап форма
+const popupImage = document.querySelector('.popup-image')
 
 const addButton = document.querySelector('.profile__add-button')  //кнопка ред
 const editButton = document.querySelector('.profile__edit-button') //кнопка добав
+const popupAddButton = document.querySelector('.popup-add__button')
 const editPopupCloseButton = document.querySelector('.popup-edit__close-button');  //кнопка закрытия 
 const addPopupCloseButton = document.querySelector('.popup-add__close-button');  //кнопка закрытия 
+const imagePopupCloseButton = document.querySelector('.image-popup__close-button')
 const openPopupButtons = document.querySelector('.open-popup');  //кнопка открытия
 
 const profileName = document.querySelector('.profile__name')  //имя
 const profileJob = document.querySelector('.profile__job')  //профессия
+const elementPlace = document.querySelector('.element__title')  // имя карточки
+const elementLink = document.querySelector('.element__link')  // линк карточки
+
 
 const inputName = document.querySelector('.popup__input_value_name')  //имя в форме
 const inputJob = document.querySelector('.popup__input_value_job')  //профессия в форме
 const inputPlace = document.querySelector('.popup__input_value_place')  //название места карточки в форме
 const inputLink = document.querySelector('.popup__input_value_link')  //картинка карточки в форме
 
-const initialCardList = document.querySelector('.elements') //карточки
-const elementTemplate = document.querySelector('#element-template').content; 
+const cardList = document.querySelector('.elements') //карточки
+const elementTemplate = document.getElementById('element-template').content; 
+
+const popupOpenImage = document.querySelector('.element__image_is-opened')
+const popupOpenTitle = document.querySelector('.element__title_is-opened')
 
 //открытие попапа
+
 function openPopup(popup) {
   popup.classList.add('popup_is-opened')
 }
 
 //открытие попапа добавления
+
 addButton.addEventListener('click', function () {
   openPopup(popupAdd);
 })
 
 //открытие попапа редактирования
+
 editButton.addEventListener('click',function() {
 inputName.value = profileName.textContent
 inputJob.value = profileJob.textContent
 openPopup(popupEdit)
 })
+  
 
 // закрытие попапа
+
 function closePopup(popup) {
     popup.classList.remove('popup_is-opened')
 }
@@ -50,6 +63,9 @@ editPopupCloseButton.addEventListener('click', function() {
 addPopupCloseButton.addEventListener('click', function() {
   closePopup(popupAdd)
 })
+imagePopupCloseButton.addEventListener('click', function() {
+  closePopup(popupImage)
+})
 
 //сохранение информации
 function formSubmitHandler(evt) {
@@ -60,17 +76,25 @@ function formSubmitHandler(evt) {
 }
 popupForm.addEventListener('submit', formSubmitHandler)
 
+//создание новой карточки
+const addCard = (card) =>{
+  cardList.prepend(card);
+}
 
 //добавление новой карточки
 
-function formAddHandler(evt) {
+function handleAddCardSubmit(evt) {
   evt.preventDefault();
   const card = {}
   card.name = inputPlace.value
   card.link = inputLink.value
-  formAddHandler.prepend(renderCard(evt))
+  addCard(renderCard(card))
+  evt.target.reset()
   closePopup(popupAdd)
 }
+popupAdd.addEventListener('submit', handleAddCardSubmit)
+
+
 
 // создание карточек в html
 
@@ -102,32 +126,41 @@ const initialCards = [
   ];
 
 
-    //функция добавления карточек
+    //функция отображения карточек
 function render(cards) {
     cards.forEach((item) => {
-      initialCardList.append(renderCard(item))
+      cardList.append(renderCard(item))
     })
 }
 //карточка
-function renderCard({name, link}) {
+const renderCard = ({link, name}) => {
     const placeElement = elementTemplate.querySelector('.element').cloneNode(true)
 
     placeElement.querySelector('.element__title').textContent = name
-    placeElement.querySelector('.element__image').src = link
-
+    const image = placeElement.querySelector('.element__image');
+    
+    image.src = link
+    image.alt = link
+    
     placeElement.querySelector('.element__like').addEventListener('click', function(evt) {
-      evt.target.classList.toggle('element__like-active')  //лайк
+      evt.target.classList.toggle('element__like-active');  //лайк
     })
 
+
+    placeElement.querySelector('.element__trash').addEventListener('click', function(evt) {
+      evt.target.closest('.element').remove(); //удаление карточки
+
+      })
+    const cardImage = placeElement.querySelector('.element__image')
+    cardImage.addEventListener('click', () => {
+        popupOpenImage.src = link;
+        popupOpenTitle.alt = name;
+        popupOpenTitle.textContent = name;
+        openPopup(popupImage)
+      })
+
+ 
     return placeElement
-}
+      } 
+
 render(initialCards)
-
-//удаление
-function deleteCard(evt) {
-  const card = evt.target.closest('card')
-  card.remove();
-}
-// лайк
-
-
