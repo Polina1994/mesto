@@ -122,7 +122,9 @@ const createCard = ({ link, name }) => {
     .addEventListener("click", function (evt) {
       evt.target.closest(".element").remove(); //удаление карточки
     });
+
   const cardImage = placeElement.querySelector(".element__image");
+  
   cardImage.addEventListener("click", () => {
     popupOpenImage.src = link;
     popupOpenTitle.alt = name;
