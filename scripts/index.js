@@ -28,6 +28,7 @@ const elementTemplate = document.getElementById("element-template").content;
 const popupOpenImage = document.querySelector(".popup-image__image");
 const popupOpenTitle = document.querySelector(".popup-image__title");
 
+
 //открытие попапа
 
 function openPopup(popup) {
@@ -136,3 +137,5 @@ const createCard = ({ link, name }) => {
 };
 
 render(initialCards);
+
+
