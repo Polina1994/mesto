@@ -3,8 +3,9 @@ const object = {
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button",
   inactiveButtonClass: "button_inactive",
-  inputErrorClass: "`.${inputElement.id}-error`",
+  inputErrorClass: "form__input_type_error",
   errorClass: "form__input-error_active",
+
 };
 
 //    ВАЛИДАЦИЯ ФОРМ
