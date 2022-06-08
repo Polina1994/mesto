@@ -80,4 +80,4 @@ function toggleButtonState(inputList, buttonElement) {
   }
 }
 
-enableValidation();
+enableValidation(object);
