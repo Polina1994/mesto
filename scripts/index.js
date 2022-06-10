@@ -8,13 +8,9 @@ const popupImage = document.querySelector(".popup-image");
 
 const buttonPopupAdd = document.querySelector(".profile__add-button"); //кнопка ред
 const buttonPopupEdit = document.querySelector(".profile__edit-button"); //кнопка добав
-const buttonCloseEditPopup = document.querySelector(
-  ".popup-edit__close-button"
-); //кнопка закрытия
+const buttonCloseEditPopup = document.querySelector(".popup-edit__close-button"); //кнопка закрытия
 const buttonCloseAddPopup = document.querySelector(".popup-add__close-button"); //кнопка закрытия
-const buttonCloseImagePopup = document.querySelector(
-  ".popup-image__close-button"
-);
+const buttonCloseImagePopup = document.querySelector(".popup-image__close-button");
 const buttonsOpenPopup = document.querySelector(".open-popup"); //кнопка открытия
 
 const profileName = document.querySelector(".profile__name"); //имя
@@ -113,6 +109,7 @@ function handleAddCardSubmit(evt) {
   addCard(createCard(card));
   evt.target.reset();
   closePopup(popupAdd);
+  enableValidation(object)
 }
 popupAdd.addEventListener("submit", handleAddCardSubmit);
 
@@ -132,7 +129,7 @@ const createCard = ({ link, name }) => {
   const image = placeElement.querySelector(".element__image");
 
   image.src = link;
-  image.alt = link;
+  image.alt = name;
 
   placeElement
     .querySelector(".element__like")
