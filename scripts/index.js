@@ -1,23 +1,22 @@
 import { Card } from './Card.js'
 import { FormValidator } from './FormValidator.js';
-import { items } from './constants.js'
-
-const validate = {
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "button_inactive",
-  inputErrorClass: "form__input_type_error",
-  errorClass: "form__input-error_active",
-};
+import { items, validate } from './constants.js'
 
 
-const popupList = Array.from(document.querySelectorAll(".popup"));
+
+
+// const popupList = Array.from(document.querySelectorAll(".popup"));
 
 const popupEdit = document.querySelector(".popup-edit"); //попап редактирования
 const popupAdd = document.querySelector(".popup-add"); //попап добавления
-const popup = document.querySelectorAll(".popup"); //попап
-const popupForm = document.querySelector(".popup__form"); //попап форма
-export const popupImage = document.querySelector(".popup-image");
+const popup = document.querySelector(".popup"); //попап
+const popupForm = popup.querySelector(".popup__form"); //попап форма
+const formAdd =document.querySelector('.form-add')
+const formTitle = popup.querySelector('.popup__input_value_place')
+const formLink = popup.querySelector('.popup__input_value_link')
+const formEdit = document.querySelector('.form-edit')
+
+const popupImage = document.querySelector(".popup-image");
 
 const buttonPopupAdd = document.querySelector(".profile__add-button"); //кнопка ред
 const buttonPopupEdit = document.querySelector(".profile__edit-button"); //кнопка добав
@@ -39,12 +38,14 @@ const inputLink = document.querySelector(".popup__input_value_link"); //карт
 const cardList = document.querySelector(".elements"); //карточки
 const elementTemplate = document.getElementById("element-template").content;
 
-export const popupOpenImage = document.querySelector(".popup-image__image");
-export const popupOpenTitle = document.querySelector(".popup-image__title");
+const popupOpenImage = document.querySelector(".popup-image__image");
+const popupOpenTitle = document.querySelector(".popup-image__title");
 
+const editFormValid = new FormValidator(validate, formEdit)
+const addFormValid = new FormValidator(validate, formAdd)
 //открытие попапа
 
-export function openPopup(popup) {
+function openPopup(popup) {
   popup.classList.add("popup_is-opened");
   document.addEventListener("keydown", popupCloseEscButton);
 }
@@ -104,6 +105,7 @@ function handleEditCardSubmit(evt) {
   profileName.textContent = inputName.value;
   profileJob.textContent = inputJob.value;
   closePopup(popupEdit);
+  editFormValid.toggleButtonState()
 }
 popupForm.addEventListener("submit", handleEditCardSubmit);
 
@@ -185,6 +187,7 @@ function handleAddCardSubmit(evt) {
   createCard(card)
   evt.target.reset()
   closePopup(popupAdd)
+  addFormValid.toggleButtonState()
 
 }
 popupAdd.addEventListener("submit", handleAddCardSubmit);
@@ -197,3 +200,6 @@ function createCard(card) {
   cardList.prepend(newCard(card))
 }
 items.forEach(createCard)
+
+editFormValid.enableValidation()
+addFormValid.enableValidation()
