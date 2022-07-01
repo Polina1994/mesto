@@ -1,5 +1,6 @@
 import { Card } from './Card.js'
 import { FormValidator } from './FormValidator.js';
+import { items } from './constants.js'
 
 const validate = {
   inputSelector: ".popup__input",
@@ -107,57 +108,92 @@ function handleEditCardSubmit(evt) {
 popupForm.addEventListener("submit", handleEditCardSubmit);
 
 //создание новой карточки
-const addCard = (card) => {
-  cardList.prepend(card);
-};
+// const addCard = (card) => {
+//   cardList.prepend(card);
+// };
 
 //добавление новой карточки
 
-function handleAddCardSubmit(evt) {
-  evt.preventDefault();
-  const card = {};
-  card.name = inputPlace.value;
-  card.link = inputLink.value;
-  addCard(createCard(card));
-  evt.target.reset();
-  closePopup(popupAdd);
-  enableValidation(validate)
-}
-popupAdd.addEventListener("submit", handleAddCardSubmit);
+// function handleAddCardSubmit(evt) {
+//   evt.preventDefault();
+//   const name = inputPlace.value;
+//   const link = inputLink.value;
+//   createCard(name, link);
+  
+//   closePopup(popupAdd);
+//   enableValidation(validate)
+//   evt.target.reset();
+// }
+// popupAdd.addEventListener("submit", handleAddCardSubmit);
 
 
 //карточка
-const createCard = ({ link, name }) => {
-  const placeElement = elementTemplate
-    .querySelector(".element")
-    .cloneNode(true);
+// const createCard = ({ link, name }) => {
+//   const placeElement = elementTemplate
+//     .querySelector(".element")
+//     .cloneNode(true);
 
-  placeElement.querySelector(".element__title").textContent = name;
-  const image = placeElement.querySelector(".element__image");
+//   placeElement.querySelector(".element__title").textContent = name;
+//   const image = placeElement.querySelector(".element__image");
 
-  image.src = link;
-  image.alt = name;
+//   image.src = link;
+//   image.alt = name;
 
-  placeElement
-    .querySelector(".element__like")
-    .addEventListener("click", function (evt) {
-      evt.target.classList.toggle("element__like-active"); //лайк
-    });
+//   placeElement
+//     .querySelector(".element__like")
+//     .addEventListener("click", function (evt) {
+//       evt.target.classList.toggle("element__like-active"); //лайк
+//     });
 
-  placeElement
-    .querySelector(".element__trash")
-    .addEventListener("click", function (evt) {
-      evt.target.closest(".element").remove(); //удаление карточки
-    });
+//   placeElement
+//     .querySelector(".element__trash")
+//     .addEventListener("click", function (evt) {
+//       evt.target.closest(".element").remove(); //удаление карточки
+//     });
 
-  const cardImage = placeElement.querySelector(".element__image");
+//   const cardImage = placeElement.querySelector(".element__image");
 
-  cardImage.addEventListener("click", () => {
-    popupOpenImage.src = link;
-    popupOpenTitle.alt = name;
-    popupOpenTitle.textContent = name;
-    openPopup(popupImage);
-  });
+//   cardImage.addEventListener("click", () => {
+//     popupOpenImage.src = link;
+//     popupOpenTitle.alt = name;
+//     popupOpenTitle.textContent = name;
+//     openPopup(popupImage);
+//   });
 
-  return placeElement;
-};
+//   return placeElement;
+// };
+
+// function createCard(name, link) {
+//   const cardElement = new Card(name, link, '.card')
+//   const newCard = cardElement.generateCard()
+  
+//   cardList.prepend(newCard)
+// }
+
+function openImage(name, link) {
+  openPopup(popupImage)
+  popupOpenImage.src = link
+  popupOpenImage.alt = name
+  popupOpenTitle.textContent = name
+}
+
+function handleAddCardSubmit(evt) {
+  evt.preventDefault()
+  const card = {}
+  card.name = inputPlace.value
+  card.link = inputLink.value
+  createCard(card)
+  evt.target.reset()
+  closePopup(popupAdd)
+
+}
+popupAdd.addEventListener("submit", handleAddCardSubmit);
+function newCard(data) {
+  const cards = new Card(data, '.card', openImage)
+  return cards.generateCard()
+}
+
+function createCard(card) {
+  cardList.prepend(newCard(card))
+}
+items.forEach(createCard)
