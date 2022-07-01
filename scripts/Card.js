@@ -1,61 +1,49 @@
-import { popupOpenImage, popupOpenTitle, openPopup, popupImage } from './index.js';
+// import { popupOpenImage, popupOpenTitle, openPopup, popupImage } from './index.js';
+// import { items } from './constants.js';
 
 export class Card {
-    constructor(data, cardSelector) {
+    constructor(data, cardSelector, openImage) {
         this._link = data.link
         this._name = data.name
-        this._like = data.like
-        this._trash = data.trash
         this._cardSelector = cardSelector
+        this._card = this._getTemplate()
+
+        this._cardName = this._card.querySelector('.element__title')
+        this._cardLink = this._card.querySelector('.element__image')
+        this._likeBtn = this._card.querySelector('.element__like')
+        this._trashBtn = this._card.querySelector('.element__trash')
+
+        this._openImage = openImage
     }
     _getTemplate() {
-        const cardElement = document
+        const card = document
         .querySelector(this._cardSelector)
         .content
         .querySelector('.element')
         .cloneNode(true)
 
-        return cardElement
+        return card
     }
-    generateCard() {
-        this._element = this._getTemplate();
-        this._setEventListeners()
-        this._element.querySelector('.element__title').textContent = this._name
-        this._element.querySelector('.element__image').src = this._link
-        this._element.querySelector('.element__like').src = this._like
-        this._element.querySelector('.element__trash').src = this._trash
 
-        return this._element
-    }
-    _buttonLike() {
-        this._element.querySelector('.element__like').classList.toggle('element__like-active')
-    }
-    _buttonDelete() {
-        this._element.querySelector('.element__trash').closest('.element').remove()
-    }
-    
-    _openImage() {
-        popupOpenImage.src = this._link
-        popupOpenTitle.alt = this._name
-        popupOpenTitle.textContent = this._name
-        openPopup(popupImage)
-    }
 
     _setEventListeners() {
-        this._element.querySelector('.element__trash').addEventListener('click', () => {
-            this._buttonDelete()
+        this._trashBtn.addEventListener('click', () => {
+            this._trashBtn.closest('.element').remove()
           })
-          this._element.querySelector('.element__image').addEventListener('click', () => {
-            this._openImage()
+          this._cardLink.addEventListener('click', () => {
+            this._openImage(this._name, this._link)
           })
-        this._element.querySelector('.element__like').addEventListener('click', () => {
-            this._buttonLike()
+        this._likeBtn.addEventListener('click', () => {
+            this._likeBtn.classList.toggle('element__like-active')
           })
     }
+    generateCard() {
+        
+        this._cardName.textContent = this._name
+        this._cardLink.src = this._link
+        this._cardLink.alt = this._name
+        this._setEventListeners()
+        return this._card
+    }
+     
 }
-items.forEach((item) => {
-    const card = new Card(item, '.card')
-    const cardElement = card.generateCard()
-
-    document.querySelector('.elements').append(cardElement)
-});
