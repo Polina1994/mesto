@@ -30,7 +30,7 @@
             </section>
 
             <section class="elements" aria-label="фото">
-
+            
                 <template id="element-template" class="card">
                     <article class="element">
                         <button type="button" class="element__trash" aria-label="кнопка удалить"></button>
@@ -55,7 +55,7 @@
             <button type="button" class="popup-edit__close-button popup__close-button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
 
-            <form class="popup__form form-edit form" name="edit-form" novalidate>
+            <form class="popup__form form-edit form" name="edit-form" id="form-edit" novalidate>
                 <input id="form__input-text" type="text" name="name" class="popup__input popup__input_value_name form__input" placeholder="Имя" value="" minlength="2" maxlength="40" required>
                 <span class="form__input-text-error"></span>
     
@@ -73,7 +73,7 @@
             
             <h2 class="popup__title">Новое место</h2>
 
-            <form class="popup__form form-add form" name="add-form" novalidate>
+            <form class="popup__form form-add form" name="add-form" id="form-add" novalidate>
                 <input type="text" name="place" id="form__input-place" class="popup__input popup__input_value_place form__input" value="" placeholder="Название" minlength="2" maxlength="30" required>
                 <span class="form__input-place-error"></span>
                 
@@ -94,10 +94,10 @@
         </article>
     </div> 
     
-    <script src="./scripts/cards.js"></script>
+    <!-- <script type="module" src="./scripts/constants.js"></script> -->
     <!-- <script  src="./scripts/validate.js"></script> -->
-    <script type="module" src="./scripts/Card.js"></script>
-    <script type="module" src="./scripts/FormValidator.js"></script>
+    <!-- <script type="module" src="./scripts/Card.js"></script> -->
+    <!-- <script type="module" src="./scripts/FormValidator.js"></script> -->
     <script type="module" src="./scripts/index.js"></script>
 </body>
 </html>
