@@ -25,17 +25,24 @@ export class Card {
         return card
     }
 
-
+    _cardLike() {
+        this._likeBtn.classList.toggle('element__like-active')
+    }
+    _cardDelete() {
+        this._trashBtn.closest('.element').remove()
+    }
     _setEventListeners() {
         this._trashBtn.addEventListener('click', () => {
-            this._trashBtn.closest('.element').remove()
-          })
-          this._cardLink.addEventListener('click', () => {
+            this._cardDelete()
+        })
+
+        this._cardLink.addEventListener('click', () => {
             this._openImage(this._name, this._link)
-          })
+        })
+
         this._likeBtn.addEventListener('click', () => {
-            this._likeBtn.classList.toggle('element__like-active')
-          })
+            this._cardLike()
+        })
     }
     generateCard() {
         
