@@ -1,30 +1,37 @@
+import arkhyz from "../images/altay.jpg"
+import chelyabinsk from "../images/baikal.jpg"
+import ivanovo from "../images/dombay.jpg"
+import kamchatka from "../images/elbrus.jpg"
+import kholmogorsk from "../images/kamchatka.jpg"
+import baikal from "../images/karachaevo.jpg"
+
 // создание карточек в html
 export const items = [
-    {
-      name: "Архыз",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-    },
-    {
-      name: "Челябинская область",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-    },
-    {
-      name: "Иваново",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-    },
-    {
-      name: "Камчатка",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-    },
-    {
-      name: "Холмогорский район",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-    },
-    {
-      name: "Байкал",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-    },
-  ];
+  {
+    name: "Архыз",
+    link: arkhyz
+  },
+  {
+    name: "Челябинская область",
+    link: chelyabinsk,
+  },
+  {
+    name: "Иваново",
+    link: ivanovo,
+  },
+  {
+    name: "Камчатка",
+    link: kamchatka,
+  },
+  {
+    name: "Холмогорский район",
+    link: kholmogorsk,
+  },
+  {
+    name: "Байкал",
+    link: baikal,
+  },
+];
 
   export const validate = {
     inputSelector: ".popup__input",

@@ -5,6 +5,7 @@
     margin-right: 30px;
     object-fit: cover;
     background-position: center;
+    background-image: url(../../../images/image.png);
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
