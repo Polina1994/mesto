@@ -36,7 +36,7 @@ buttonPopupEdit.addEventListener('click', openEditPopup)
 
 const popupAddCard = new PopupWithForm({
   handleFormSubmit: (values) => {
-    cardList.addItem(createCard({place: values.place, link: values.link}))
+    cardList.addItem(createCard(values))
     popupAddCard.close()
   }
 }, '.popup-add')
@@ -46,7 +46,6 @@ function openAddPopup() {
   addFormValid.toggleButtonState()
   addFormValid.resetValidation()
   popupAddCard.open()
-
 }
 buttonPopupAdd.addEventListener('click', openAddPopup)
 
@@ -54,7 +53,7 @@ const userInfo = new UserInfo(userSelectors)
 
 const cardList = new Section({
   data: initialCards,
-  renderer: (item) => cardList.addItem(createCard(item))
+  renderer: (data) => cardList.addItem(createCard(data))
 }, '.elements')
 
 cardList.renderSection()
