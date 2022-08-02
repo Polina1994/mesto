@@ -8,27 +8,27 @@ import baikal from "../images/karachaevo.jpg"
 // создание карточек в html
 export const initialCards = [
   {
-    name: "Архыз",
+    place: "Архыз",
     link: arkhyz
   },
   {
-    name: "Челябинская область",
+    place: "Челябинская область",
     link: chelyabinsk,
   },
   {
-    name: "Иваново",
+    place: "Иваново",
     link: ivanovo,
   },
   {
-    name: "Камчатка",
+    place: "Камчатка",
     link: kamchatka,
   },
   {
-    name: "Холмогорский район",
+    place: "Холмогорский район",
     link: kholmogorsk,
   },
   {
-    name: "Байкал",
+    place: "Байкал",
     link: baikal,
   },
 ];
