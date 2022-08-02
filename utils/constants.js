@@ -41,7 +41,7 @@ export const initialCards = [
     inputErrorClass: "form__input_type_error",
     errorClass: "form__input-error_active",
   };
-export const userInfoConst = {
+export const userSelectors = {
   nameSelector: '.profile__name',
   jobSelector: '.profile__job'
 }
