@@ -59,8 +59,8 @@ const userInfo = new UserInfo({
   profileAvatar: '.profile__avatar',
 });
 
-const cardList = new Section({
-    renderer: createCard
+const cardList = new Section((item) =>{
+    cardList.addItem(createCard(item))
 }, '.elements');
 
 
@@ -68,26 +68,27 @@ Promise.all([
   api.getUserData(), 
   api.getCards() 
 ]) 
-.then(([result, initialCards]) => {
+.then(([result, cards]) => {
   userInfo.setUserInfo({name: result.name, about: result.about, profileId: result._id, profileAvatar: result.avatar});
-  cardList.renderSection(initialCards);
+  cardList.renderSection(cards);
 })
 .catch((err)=>{              
   console.log(err);
 })
 
 function createCard(data) {
-  const cards = new Card(data,'.card', {
-    handleCardClick: popupWithImage.open,
-    handleDeleteClick: openPopupConfirm.open,
-    profileId: userInfo.getUserInfo().profileId,
-    handleDislikeCard: () => dislikeCard(),
-    handleLikeCard: () => likeCard()
-  });
+  const cards = new Card(data,'.card', handleCardClick
+    // handleDeleteClick: openPopupConfirm.open,
+    // profileId: userInfo.getUserInfo().profileId,
+    // handleDislikeCard: () => dislikeCard(),
+    // handleLikeCard: () => likeCard()
+  );
   return cards.generateCard();
 }
 
-
+function handleCardClick(name, link) {
+  popupWithImage.open(name, link)
+}
 function openPopupConfirm(id, card) {
   popupConfirm.open();
       popupConfirm.setSubmitCallback(() => {
@@ -187,4 +188,3 @@ buttonOpenAvatarPopup.addEventListener('click', () => {
   popupAvatar.open();
   avatarValidator.resetValidation();
 });
-
