@@ -8,27 +8,27 @@ import baikal from "../images/karachaevo.jpg"
 // создание карточек в html
 export const initialCards = [
   {
-    place: "Архыз",
+    name: "Архыз",
     link: arkhyz
   },
   {
-    place: "Челябинская область",
+    name: "Челябинская область",
     link: chelyabinsk,
   },
   {
-    place: "Иваново",
+    name: "Иваново",
     link: ivanovo,
   },
   {
-    place: "Камчатка",
+    name: "Камчатка",
     link: kamchatka,
   },
   {
-    place: "Холмогорский район",
+    name: "Холмогорский район",
     link: kholmogorsk,
   },
   {
-    place: "Байкал",
+    name: "Байкал",
     link: baikal,
   },
 ];
@@ -53,19 +53,19 @@ export const formEdit = document.querySelector('.form-edit')
 
 export const buttonPopupAdd = document.querySelector(".profile__add-button"); //кнопка ред
 export const buttonPopupEdit = document.querySelector(".profile__edit-button"); //кнопка добав
-
+export const buttonPopupAvatar = document.querySelector('.profile__avatar-overlay')
 
 export const inputName = document.querySelector(".popup__input_value_name"); //имя в форме
 export const inputJob = document.querySelector(".popup__input_value_job"); //профессия в форме
-export const inputPlace = document.querySelector(".popup__input_value_place"); //название места карточки в форме
+export const inputname = document.querySelector(".popup__input_value_name"); //название места карточки в форме
 export const inputLink = document.querySelector(".popup__input_value_link"); //картинка карточки в форме
 export const popupImage = document.querySelector('.popup-image')
 
-export const  popupOpenImage = document.querySelector('.popup-image__image')
+export const popupOpenImage = document.querySelector('.popup-image__image')
 export const popupOpenTitle = document.querySelector('.popup-image__title')
 export const addPopup = document.querySelector('.popup-add')
 export const editPopup = document.querySelector('.popup-edit')
 export const avatarPopup = document.querySelector('popup-avatar')
-
+export const inputAvatar = document.querySelector('.popup__input_value_avatar')
 export const profileName = document.querySelector('.profile__name')
 export const profileJob = document.querySelector('.profile__job')
