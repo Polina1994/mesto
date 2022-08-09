@@ -42,8 +42,9 @@ export const initialCards = [
     errorClass: "form__input-error_active",
   };
 export const userSelectors = {
-  nameSelector: '.profile__name',
-  jobSelector: '.profile__job'
+  name: '.profile__name',
+  job: '.profile__job',
+  avatar: 'prodile__avatar'
 }
 
 export const formAdd = document.querySelector('.form-add')
@@ -64,6 +65,7 @@ export const  popupOpenImage = document.querySelector('.popup-image__image')
 export const popupOpenTitle = document.querySelector('.popup-image__title')
 export const addPopup = document.querySelector('.popup-add')
 export const editPopup = document.querySelector('.popup-edit')
+export const avatarPopup = document.querySelector('popup-avatar')
 
 export const profileName = document.querySelector('.profile__name')
 export const profileJob = document.querySelector('.profile__job')
