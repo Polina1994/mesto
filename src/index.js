@@ -6,9 +6,7 @@ import {PopupWithImage} from '../components/PopupWithImage.js';
 import {PopupWithForm} from '../components/PopupWithForm.js';
 import {PopupConfirm} from '../components/PopupConfirm.js';
 import {UserInfo} from '../components/UserInfo.js';
-import { initialCards } from '../utils/constants';
 import {api} from '../components/Api.js'
-import { css } from 'jquery';
 const editPopup = document.querySelector('.popup-edit');
 const nameInput = editPopup.querySelector('.popup__input_value_name');
 const jobInput = editPopup.querySelector('.popup__input_value_job');
@@ -75,49 +73,47 @@ Promise.all([
 .catch((err)=>{              
   console.log(err);
 })
-
 function createCard(data) {
-  const cards = new Card(data,'.card', handleCardClick
-    // handleDeleteClick: openPopupConfirm.open,
-    // profileId: userInfo.getUserInfo().profileId,
-    // handleDislikeCard: () => dislikeCard(),
-    // handleLikeCard: () => likeCard()
-  );
+  const cards = new Card(data,'.card', handleCardClick,  {
+    handleDeleteClick: () => openPopupConfirm(data._id, cards),
+    handleLikeCard: () => like(data._id, cards),
+    handleDislikeCard: () => dislike(data._id, cards),
+    myId: userInfo.getUserInfo().myId
+   })
   return cards.generateCard();
 }
 
 function handleCardClick(name, link) {
   popupWithImage.open(name, link)
 }
-function openPopupConfirm(id, card) {
-  popupConfirm.open();
-      popupConfirm.setSubmitCallback(() => {
-        api.deleteCard(id)
-          .then(() => {
-            card.deleteCard();
-            popupConfirm.close();
-          })
-          .catch((err) => {
-            console.error(err); 
-          });
-      });
+
+function openPopupConfirm (id, cards) {
+  popupConfirm.open(() => {
+    api.deleteCard(id)
+    .then(() => {
+      cards.deleteCard();
+      popupConfirm.close();
+    })
+    .catch((err) => {
+      console.error(err); 
+    });
+  });
 }
 
-function dislikeCard(id, card) {
+function dislike(id, cards) {
   api.dislikeCard(id)
-    .then((result) => {
-      card.deactiveLikes(result);
+    .then(() => {
+      cards.cardDislike();
     })
     .catch((err) => {
       console.error(err); 
     });
 }
 
-function likeCard(id, card) {
+function like(id, cards) {
   api.likeCard(id)
-    .then((result) => {
-      console.log(result);
-      card.activeLikes(result);
+    .then(() => {
+      cards.cardLike();
     })
     .catch((err) => {
       console.error(err); 
@@ -149,14 +145,18 @@ function editProfileInfo(data) {
 function addNewCard(result) {
   popupCard.setLoadingState(true);
   api.addNewCard(result)
-  .then((data) => {
-    createCard.addItem(data);
-    popupCard.close();
+  .then((result) => {
+    cardList.addItem(createCard(result))
+  })
+  .then(() => {
+    popupCard.close()
   })
   .catch((err) => {
     console.error(err); 
   })
-  .finally(() => popupCard.setLoadingState(false));
+  .finally(() => 
+    popupCard.setLoadingState(false)
+);
 }
 
 
