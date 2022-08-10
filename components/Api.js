@@ -41,17 +41,17 @@ export class Api {
           .then(res => this._getResponseData(res));
       }
 
-      likeCard(id) {
+      likesCard(id) {
         const config = Object.assign({method: 'PUT',
         headers: this._headers});
-        return fetch(`${this._baseUrl}/cards/like/${id}`, config)
+        return fetch(`${this._baseUrl}/cards/${id}/likes`, config)
           .then(res => this._getResponseData(res));
       }
       
       dislikeCard(id) {
         const config = Object.assign({method: 'DELETE', 
         headers: this._headers});
-        return fetch(`${this._baseUrl}/cards/like/${id}`, config)
+        return fetch(`${this._baseUrl}/cards/${id}/likes`, config)
           .then(res => this._getResponseData(res));
       }
       setNewAvatar(body) {
