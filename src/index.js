@@ -76,12 +76,32 @@ Promise.all([
 function createCard(data) {
   const cards = new Card(data,'.card', handleCardClick,  {
     handleDeleteClick: () => openPopupConfirm(data._id, cards),
-    handleLikeCard: () => like(data._id, cards),
-    handleDislikeCard: () => dislike(data._id, cards),
-    myId: userInfo.getUserInfo().myId
+
+    handleLikeCard: () => {
+      api.likesCard(data._id, cards)
+      .then((res) => {
+        cards.renewLikes(res)
+      })
+      .then(() => {
+        cards.likeCard()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    },
+    handleDislikeCard: () => 
+      api.dislikeCard(data._id, cards)
+      .then((res) => {
+        cards.dislikeCard()
+        cards.renewLikes(res)
+      })
+      .catch((err) => {
+        console.error(err); 
+      }),
+    userId: userInfo.getId()
    })
   return cards.generateCard();
-}
+  }
 
 function handleCardClick(name, link) {
   popupWithImage.open(name, link)
@@ -102,22 +122,16 @@ function openPopupConfirm (id, cards) {
 
 function dislike(id, cards) {
   api.dislikeCard(id)
-    .then(() => {
-      cards.cardDislike();
+    .then((result) => {
+      cards.setLikes(result.likes);
     })
     .catch((err) => {
       console.error(err); 
     });
 }
 
-function like(id, cards) {
-  api.likeCard(id)
-    .then(() => {
-      cards.cardLike();
-    })
-    .catch((err) => {
-      console.error(err); 
-    });
+function like() {
+
 }
 
 function openPropfilePopup() {
