@@ -7,17 +7,16 @@ export class PopupConfirm extends Popup {
     this._submitCallback = null;
   }
 
+  open(deleteCard) {
+    super.open()
+    this._deleteCard = deleteCard
+  }
   setEventListeners() {
     super.setEventListeners();
     this._confirmButton.addEventListener('click', (e) => {
       e.preventDefault();
-      if (typeof this._submitCallback == 'function') {
-        this._submitCallback();
-      }
+      this._deleteCard()
     });
   }
 
-  setSubmitCallback(onSubmit) {
-    this._submitCallback = onSubmit;
-  }
 }
