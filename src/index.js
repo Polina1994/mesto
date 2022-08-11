@@ -75,7 +75,7 @@ Promise.all([api.getUserData(), api.getCards()])
       profileAvatar: result.avatar,
     });
     userInfo.setUserId(result._id)
-    cardList.renderSection(cards);
+    cardList.renderSection(cards.reverse());
   })
   .catch((err) => {
     console.log(err);
@@ -87,7 +87,7 @@ function createCard(data) {
   {
     handleDeleteClick: () => openPopupConfirm(data._id, cards),
 
-    handleLikeCard: (cards) => {
+    handleLikeCard: () => {
       api
         .likeCard(data._id, cards)
         .then((res) => {
