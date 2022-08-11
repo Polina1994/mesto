@@ -93,8 +93,9 @@ renewLikes(data) {
     this._cardLink.alt = this._name
 
     this._checkCardOwner()
-    this.checkLikes()
     this.renewLikes(this._data)
+    this.checkLikes()
+    
     return this._card
   }
 }
