@@ -3,6 +3,7 @@ export class UserInfo {
       this._profileName = document.querySelector(userInfo.nameSelector);
       this._profileDescription = document.querySelector(userInfo.descriptionSelector);
       this._profileAvatar = document.querySelector(userInfo.profileAvatar);
+      this._userId = {}
     }
   
     getUserInfo() {
@@ -14,14 +15,17 @@ export class UserInfo {
     }
   
     setUserInfo(data) {
-      this._profileName.textContent = data.name;
-      this._profileDescription.textContent = data.about;
-      this._profileAvatar.src = data.profileAvatar;
-      this._id = data.userId
-
+      if (data.name) {
+        this._profileName.textContent = data.name;
+      }
+      if (data.about) {
+        this._profileDescription.textContent = data.about;
+      }
+      if (data.profileAvatar) {
+        this._profileAvatar.src = data.profileAvatar;
+      }
     }
-
-    getId() {
-      return this._id
+    setUserId(userId) {
+      this.id = userId
     }
   }
