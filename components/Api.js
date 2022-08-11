@@ -41,7 +41,7 @@ export class Api {
           .then(res => this._getResponseData(res));
       }
 
-      likesCard(id) {
+      likeCard(id) {
         const config = Object.assign({method: 'PUT',
         headers: this._headers});
         return fetch(`${this._baseUrl}/cards/${id}/likes`, config)
@@ -67,11 +67,3 @@ export class Api {
         return res.json();
       }
     }
-
-    export const api = new Api({
-        baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-46',
-        headers: {
-          authorization: 'b728ad0c-8a51-4521-be05-924ef3deb392',
-          'Content-Type': 'application/json'
-        }
-      });
