@@ -68,7 +68,7 @@ renewLikes(data) {
 }
 
   _checkCardOwner() {
-    if (!this._owner) {
+    if (this._owner !== this._userId) {
       this._trashBtn.remove()
       return this._card
     }
